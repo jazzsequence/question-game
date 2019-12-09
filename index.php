@@ -9,7 +9,13 @@
  * @version 0.1.0
  */
 
+namespace Game;
+
+define( 'ROOT_DIR', __DIR__ . '/' );
+define( 'SRC_DIR', __DIR__ . '/src/' );
+define( 'INC_DIR', SRC_DIR . '/inc/' );
+
 /**
  * Kick it off!
  */
-require_once __DIR__ . '/src/bootstrap.php';
+require_once SRC_DIR . 'bootstrap.php';
