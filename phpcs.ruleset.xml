@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset name="question-game">
+	<description>Linting rules and overrides for Question Game</description>
+
+	<!-- Some configuration defaults -->
+	<arg name="extensions" value="php"/>
+	<config name="show_progress" value="1"/>
+
+	<!-- Define the installed paths of our sniffs -->
+	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/fig-r/psr2r-sniffer" />
+
+	<!-- Use HM Coding Standards -->
+	<rule ref="vendor/humanmade/coding-standards">
+		<!-- Don't restrict namespaced functions to `namespace.php` -->
+		<exclude name="HM.Files.FunctionFileName"/>
+	</rule>
+
+	<!-- Add PHPDoc rules -->
+	<rule ref="WordPress-Docs"/>
+
+	<!-- Ignore 3rd-party code -->
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+</ruleset>
