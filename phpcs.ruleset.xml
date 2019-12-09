@@ -15,6 +15,18 @@
 		<exclude name="HM.Files.FunctionFileName"/>
 	</rule>
 
+	<!-- Selectively exclude the NoIncDirectory rule -->
+	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
+		<exclude-pattern>index.php</exclude-pattern>
+		<exclude-pattern>src/bootstrap.php</exclude-pattern>
+		<exclude-pattern>src/inc/functions</exclude-pattern>
+	</rule>
+
+	<!-- Allow constants and requires in index.php -->
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>index.php</exclude-pattern>
+	</rule>
+
 	<!-- Add PHPDoc rules -->
 	<rule ref="WordPress-Docs"/>
 
