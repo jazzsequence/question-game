@@ -1,0 +1,16 @@
+{
+    "name": "jazzsequence/question-game",
+    "description": "A simple game framework with escallating challenge levels",
+    "type": "project",
+    "require-dev": {
+        "humanmade/coding-standards": "0.7.0"
+    },
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Chris Reynolds",
+            "email": "chris@humanmade.com"
+        }
+    ],
+    "require": {}
+}
