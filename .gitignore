@@ -1,0 +1,12 @@
+# System files
+.DS_Store
+.htpasswd
+Thumbs.db
+/nbproject/private/
+.idea/*
+.vscode/
+_misc/
+
+# Ignore external packages
+vendor/
+node_modules/
