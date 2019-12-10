@@ -39,3 +39,34 @@ function get_template( string $template_name ) {
 		require_once $template_path;
 	}
 }
+
+/**
+ * Returns the URL path to the assets directory or, optionally, a specific file inside the assets directory.
+ *
+ * @param string $file   (Optional) A specific file inside the assets directory.
+ * @param string $assets (Optional) Path override to the directory with the assets.
+ *
+ * @return string
+ */
+function assets_url( string $file = '', string $assets = '' ) : string {
+	$domain = '';
+	$assets = empty( $assets ) ? '/src/assets/' : $assets;
+
+	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
+		$domain = str_replace( 'index.php', '', $_SERVER['REQUEST_URI'] );
+	}
+	// If the file param was empty or the file passed doesn't exist, return the path to the assets dir.
+	if ( 
+		(
+			! $assets ||
+			! file_exists( "$assets/$file" )
+		) && ( 
+			empty( $file ) || 
+			! file_exists( ASSETS_PATH . "/$file" ) 
+		) ) {
+		return $domain . ASSETS_PATH;
+	}
+
+	return $domain . $assets . $file;
+}
+
