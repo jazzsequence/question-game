@@ -26,3 +26,16 @@ function get_data() : array {
 
 	return $data;
 }
+
+/**
+ * Get a template file to load on the page.
+ *
+ * @param string $template_name (Required) The slug of the template file.
+ */
+function get_template( string $template_name ) {
+	$template_path = TEMPLATES_DIR . "$template_name.php";
+
+	if ( file_exists( $template_path ) ) {
+		require_once $template_path;
+	}
+}
