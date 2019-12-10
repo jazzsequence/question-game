@@ -56,7 +56,7 @@ function assets_url( string $file = '', string $assets = '' ) : string {
 		$domain = str_replace( 'index.php', '', $_SERVER['REQUEST_URI'] );
 	}
 	// If the file param was empty or the file passed doesn't exist, return the path to the assets dir.
-	if ( 
+	if (
 		(
 			! $assets ||
 			! file_exists( "$assets/$file" )
