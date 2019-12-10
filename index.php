@@ -11,10 +11,8 @@
 
 namespace Game;
 
-define( 'ROOT_DIR', __DIR__ . '/' );
-define( 'SRC_DIR', ROOT_DIR . '/src/' );
-define( 'INC_DIR', SRC_DIR . '/inc/' );
-define( 'DATA_DIR', SRC_DIR . '/data/' );
+require_once SRC_DIR . 'bootstrap.php';
+require_once INC_DIR . 'functions.php';
 
 /**
  * Kick it off!
