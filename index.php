@@ -14,6 +14,7 @@ namespace Game;
 define( 'ROOT_DIR', __DIR__ . '/' );
 define( 'SRC_DIR', ROOT_DIR . '/src/' );
 define( 'INC_DIR', SRC_DIR . '/inc/' );
+define( 'DATA_DIR', SRC_DIR . '/data/' );
 
 /**
  * Kick it off!
