@@ -10,3 +10,6 @@ _misc/
 # Ignore external packages
 vendor/
 node_modules/
+
+# Ignore individual .json files in the data directory. These are for customized actions.
+src/data/*.json
