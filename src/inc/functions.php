@@ -91,3 +91,13 @@ function get_head( string $title = '' ) {
 	<?php
 }
 
+/**
+ * Output the footer section of the page.
+ */
+function get_footer() {
+	?>
+	<script src="<?php echo assets_url( 'js/main.js' ); ?>"></script>
+	</body>
+	</html>
+	<?php
+}
