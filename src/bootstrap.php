@@ -15,6 +15,9 @@ define( 'ROOT_DIR', dirname( __DIR__ ) );
 define( 'SRC_DIR', ROOT_DIR . '/src/' );
 define( 'INC_DIR', SRC_DIR . 'inc/' );
 define( 'DATA_DIR', SRC_DIR . 'data/' );
+define( 'TEMPLATES_DIR', SRC_DIR . 'templates/' );
+define( 'ASSETS_PATH', dirname( __FILE__ ) . '/assets/' );
+define( 'NES_CSS', 'node_modules/nes.css/css/' );
 
 /**
  * Run initialization stuff.
