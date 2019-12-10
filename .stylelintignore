@@ -1,0 +1,6 @@
+# 3rd-party code.
+vendor
+node_modules
+
+# Built files
+src/assets/css
