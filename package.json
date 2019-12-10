@@ -18,5 +18,8 @@
     "lint:php": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
     "lint:js": "eslint .",
     "lint": "npm run lint:js && npm run lint:php"
+  },
+  "dependencies": {
+    "nes.css": "^2.2.1"
   }
 }
