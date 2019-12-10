@@ -13,6 +13,10 @@
 	<rule ref="vendor/humanmade/coding-standards">
 		<!-- Don't restrict namespaced functions to `namespace.php` -->
 		<exclude name="HM.Files.FunctionFileName"/>
+		<!-- Ignore WordPress warning against file_get_contents -->
+		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
+		<!-- Ignore whitespace at the end of the line -->
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
 	</rule>
 
 	<!-- Selectively exclude the NoIncDirectory rule -->
