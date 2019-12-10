@@ -13,7 +13,7 @@ namespace Game;
 
 /**
  * Gets all the data from json files in the /data/ directory.
- * 
+ *
  * @return array An array of all the data from the various json files.
  */
 function get_data() : array {
