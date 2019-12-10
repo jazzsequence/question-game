@@ -17,13 +17,8 @@
 		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
 		<!-- Ignore whitespace at the end of the line -->
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
-	</rule>
-
-	<!-- Selectively exclude the NoIncDirectory rule -->
-	<rule ref="HM.Files.NamespaceDirectoryName.NoIncDirectory">
-		<exclude-pattern>index.php</exclude-pattern>
-		<exclude-pattern>src/bootstrap.php</exclude-pattern>
-		<exclude-pattern>src/inc/functions</exclude-pattern>
+		<!-- Ignore the rule that namespaced classes and functions should only live inside an inc directory -->
+		<exclude name="HM.Files.NamespaceDirectoryName.NoIncDirectory"/>
 	</rule>
 
 	<!-- Allow constants and requires in index.php -->
