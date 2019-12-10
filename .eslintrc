@@ -1,7 +1,7 @@
 {
 	"extends": "humanmade",
 	"env": {
-		"es6": true,
+		"es6": true
 	},
 	"globals": {
 		"Promise": true,
