@@ -16,3 +16,9 @@ define( 'SRC_DIR', ROOT_DIR . '/src/' );
 define( 'INC_DIR', SRC_DIR . '/inc/' );
 define( 'DATA_DIR', SRC_DIR . 'data/' );
 
+/**
+ * Run initialization stuff.
+ */
+function init() {
+	// check if database table exists, if not, create database table.
+}

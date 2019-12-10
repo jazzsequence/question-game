@@ -17,4 +17,4 @@ require_once INC_DIR . 'functions.php';
 /**
  * Kick it off!
  */
-require_once SRC_DIR . 'bootstrap.php';
+init();
