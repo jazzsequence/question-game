@@ -12,7 +12,7 @@
 namespace Game;
 
 define( 'ROOT_DIR', __DIR__ . '/' );
-define( 'SRC_DIR', __DIR__ . '/src/' );
+define( 'SRC_DIR', ROOT_DIR . '/src/' );
 define( 'INC_DIR', SRC_DIR . '/inc/' );
 
 /**
