@@ -11,7 +11,7 @@
 
 namespace Game;
 
-require_once SRC_DIR . 'bootstrap.php';
+require_once __DIR__ . '/src/bootstrap.php';
 require_once INC_DIR . 'functions.php';
 
 /**
