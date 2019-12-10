@@ -23,5 +23,6 @@ define( 'NES_CSS', 'node_modules/nes.css/css/' );
  * Run initialization stuff.
  */
 function init() {
-	// check if database table exists, if not, create database table.
+	// Update/store data.
+	get_template( 'main' );
 }
