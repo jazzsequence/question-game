@@ -20,7 +20,7 @@ function get_data() : array {
 	$data = [];
 
 	foreach ( glob( DATA_DIR . '*.json' ) as $datasrc ) {
-		$dataset = json_decode( $datasrc, true );
+		$dataset = json_decode( file_get_contents( $datasrc ), true );
 		$data    = array_merge( $data, $dataset );
 	}
 
