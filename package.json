@@ -26,8 +26,8 @@
   },
   "devDependencies": {
     "@humanmade/stylelint-config": "^0.7.0",
-    "@humanmade/webpack-helpers": "^0.6.0",
     "babel-eslint": "^10.0.3",
+    "del": "^5.1.0",
     "eslint": "^5.16.0",
     "eslint-config-humanmade": "^0.7.0",
     "eslint-config-react-app": "^3.0.8",
@@ -35,10 +35,9 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.17.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
     "node-sass": "^4.13.0",
-    "stylelint": "^12.0.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "stylelint": "^12.0.0"
   }
 }
