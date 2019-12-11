@@ -30,6 +30,8 @@ get_head();
 	<div class="nes-container with-title">
 		<!-- Stuff goes here. -->
 		<h2 class="title">Game</h2>
+
+		<?php get_template( 'question' ); ?>
 	</div>
 
 </div>
