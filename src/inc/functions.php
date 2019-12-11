@@ -223,13 +223,16 @@ function get_question() {
 
 	$questions = get_level( $level );
 
-	// Randomize the questions array.
-	shuffle( $questions );
+	if ( ! empty( $questions ) ) {
+		// Randomize the questions array.
+		shuffle( $questions );
 
-	return $questions[0];
+		return $questions[0];
+	}
+
+	return 'Start new game.';
 }
 
-function level_up( $old_level ) {
 	delete_cookie();
 	$level = $old_level + 1;
 	$question = 0;
