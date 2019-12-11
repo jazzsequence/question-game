@@ -226,6 +226,14 @@ function get_question() {
 	return $questions[0];
 }
 
+function level_up( $old_level ) {
+	delete_cookie();
+	$level = $old_level + 1;
+	$question = 0;
+	update_cookie( $level, $question );
+	return $level;
+}
+
 /**
  * Output the head section of the page.
  *
