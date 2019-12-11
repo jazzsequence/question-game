@@ -233,10 +233,20 @@ function get_question() {
 	return 'Start new game.';
 }
 
+/**
+ * Process a level up.
+ *
+ * @param int $old_level The original level that we want to increase.
+ * @return int           The new level.
+ */
+function level_up( int $old_level ) : int {
 	delete_cookie();
-	$level = $old_level + 1;
+
+	$level    = $old_level + 1;
 	$question = 0;
+
 	update_cookie( $level, $question );
+	
 	return $level;
 }
 
