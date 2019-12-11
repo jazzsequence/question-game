@@ -208,12 +208,22 @@ function get_current_question() : int {
  * Returns a random question.
  */
 function get_question() {
-	$level     = get_current_level();
+	$level          = get_current_level();
+	$question_count = get_current_question();
+
+	// Increment the question counter.
+	$question_count++;
+	
+	if ( $question_count > get_max_questions_for_level( $level ) ) {
+		$level = level_up( $level );
+	} else {
+		update_cookie( $level, $question_count );
+	}
+
 	$questions = get_level( $level );
 
 	// Randomize the questions array.
 	shuffle( $questions );
-
 
 	return $questions[0];
 }
