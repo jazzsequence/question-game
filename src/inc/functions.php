@@ -12,6 +12,72 @@
 namespace Game;
 
 /**
+ * Get the levels set in the project.
+ *
+ * @return array An array of levels and their numeric value.
+ */
+function get_levels() : array {
+	$data   = DATA_DIR . 'manifest.json';
+	$levels = [];
+
+	if ( file_exists( $data ) ) {
+		$levels = (array) json_decode( file_get_contents( $data ) )->levels;
+	}
+
+	return $levels;
+}
+
+/**
+ * Returns the data for a given level by level value if a value exists. Returns false if no level exists for that value.
+ *
+ * @param int $level The numeric level value.
+ * @return mixed     False if no level exists for the value passed. Otherwise, returns the level data for the requested level.
+ */
+function get_level( int $level ) {
+	$levels = get_levels();
+
+	// Make sure the level passed is not greater than the max level in the data.
+	if ( $level > get_max_level( $levels ) ) {
+		return false;
+	}
+
+	// Get the level name from the levels array.
+	$level_name = array_search( $level, $levels );
+
+	return get_level_data( $level_name );
+}
+
+/**
+ * Returns the data for the requested level by level name.
+ *
+ * @param string $level The level by level name. Must match an existing .json file.
+ *
+ * @return array        An array of level data.
+ */
+function get_level_data( string $level ) : array {
+	$src  = DATA_DIR . "$level.json";
+	$data = [];
+
+	if ( file_exists( $src ) ) {
+		$data = json_decode( file_get_contents( $src ) );
+	}
+
+	return $data;
+}
+
+/**
+ * Returns the highest possible level value.
+ * 
+ * Since the values are always stored as integers, we should always get back an integer, but it's possible that a false might be returned if an empty array was passed.
+ * 
+ * @param array $levels The array of levels to check.
+ * @return int          The max numeric level.
+ */
+function get_max_level( array $levels ) : int {
+	return max( array_values( $levels ) );
+}
+
+/**
  * Gets all the data from json files in the /data/ directory.
  *
  * @return array An array of all the data from the various json files.
