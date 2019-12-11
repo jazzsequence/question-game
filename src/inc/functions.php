@@ -200,7 +200,7 @@ function delete_cookie() {
 function update_cookie( int $level = 0, int $questions = 0 ) {
 	setcookie( 'qst_game', serialize( [
 		'level'     => $level,
-		'questions' => $questions
+		'questions' => $questions,
 	] ), strtotime( '+1 day' ), '/' );
 }
 
