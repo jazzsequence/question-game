@@ -168,6 +168,11 @@ function update_cookie( int $level = 0, int $questions = 0 ) {
 }
 
 /**
+ * Returns a random question.
+ */
+function get_question() {}
+
+/**
  * Output the head section of the page.
  *
  * @param string $title (Optional) A page title to display in the browser window/tab.
