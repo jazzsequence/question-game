@@ -26,6 +26,6 @@ function init() {
 	if ( ! get_cookie() ) {
 		update_cookie();
 	}
-	
+
 	get_template( 'main' );
 }

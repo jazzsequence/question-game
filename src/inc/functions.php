@@ -78,6 +78,25 @@ function get_max_level( array $levels ) : int {
 }
 
 /**
+ * Get the maximum number of questions for a given level.
+ *
+ * @param int $level The level in int format.
+ * @return int       The number of questions for that level.
+ */
+function get_max_questions_for_level( int $level ) : int {
+	$data       = DATA_DIR . 'manifest.json';
+	$level_name = array_search( $level, get_levels() );
+	$questions  = 0;
+
+	if ( $level_name && file_exists( $data ) ) {
+		$questions_per_level = json_decode( file_get_contents( $data ) );
+		$questions           = $questions_per_level[ $level_name ];
+	}
+
+	return $questions;
+}
+
+/**
  * Gets all the data from json files in the /data/ directory.
  *
  * @return array An array of all the data from the various json files.
