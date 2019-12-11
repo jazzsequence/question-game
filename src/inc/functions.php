@@ -189,19 +189,11 @@ function update_cookie( int $level = 0, int $questions = 0 ) {
 function get_current_level() : int {
 	$cookie   = unserialize( get_cookie() );
 	$level    = $cookie['level'];
-	$question = $cookie['questions'];
 
 	// If the cookie is set to level 0, we're starting a new game. Set the level to 1.
 	if ( 0 === $level ) {
 		$level++;
 		update_cookie( $level );
-	}
-
-	// If we've reached the max number of questions for this level, level up and reset the questions to 0.
-	if ( $question > get_max_questions_for_level( $level ) ) {
-		$level++;
-		$question = 0;
-		update_cookie( $level, $question );
 	}
 	
 	return $level;
