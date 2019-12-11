@@ -1,0 +1,14 @@
+.cookie-alert {
+    position: absolute;
+    bottom: 20px;
+    max-width: 90%;
+    p {
+        padding-bottom: 1rem;
+    }
+
+    button.cookie-confirm {
+        position: absolute;
+        right: 2rem;
+        bottom: 0.75rem;
+    }
+}
