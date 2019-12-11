@@ -18,9 +18,7 @@ get_head();
 	<div class="nes-container nes-text is-primary cookie-alert">
 		<p>This game uses cookies to store information. Please make sure your browser is able to save cookies and click the New Game button to start a new session.</p>
 
-		<p>
-			<button type="button" class="nes-btn cookie-confirm">Okay</button>
-		</p>	
+		<button type="button" class="nes-btn cookie-confirm">Okay</button>
 	</div>
 
 	<div class="new-game">
