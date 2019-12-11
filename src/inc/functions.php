@@ -206,9 +206,14 @@ function get_current_level() {
 	return $level ?: false;
 }
 
-function get_current_question() : int {
+/**
+ * Returns the current question based on the cookie.
+ *
+ * @return int The current question that has been displayed.
+ */
+function get_current_question() {
 	$cookie = unserialize( get_cookie() );
-	return $cookie['questions'];
+	return isset( $cookie['questions'] ) ? $cookie['questions'] : false;
 }
 
 /**
