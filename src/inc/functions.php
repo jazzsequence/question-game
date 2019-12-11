@@ -342,4 +342,16 @@ function render_new_game_button() {
 	render_button( 'New Game', '?new_game=true', [ 'is-primary', 'new-game' ] );
 }
 
+/**
+ * Output a next question button.
+ */
+function render_next_question_button() {
+	render_button( 'Next', '?next=question', [ 'is-success' ] );
+}
+
+/**
+ * Output a next level button.
+ */
+function render_next_level_button() {
+	render_button( 'Next Level', '?next=level', [ 'is-warning' ] );
 }
