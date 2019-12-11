@@ -150,6 +150,19 @@ function get_template( string $template_name ) {
 }
 
 /**
+ * Checks for a query string and returns it, parsed as an array, if it exists.
+ * 
+ * @return false|array False if no query string exists. Otherwise parses the query string into an array.
+ */
+function get_query_string() {
+	if ( empty( $_SERVER['QUERY_STRING'] ) ) {
+		return false;
+	}
+
+	return parse_str( $_SERVER['QUERY_STRING'] );
+}
+
+/**
  * Returns the URL path to the assets directory or, optionally, a specific file inside the assets directory.
  *
  * @param string $file   (Optional) A specific file inside the assets directory.
