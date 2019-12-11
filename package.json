@@ -14,8 +14,8 @@
   "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/jazzsequence/question-game#readme",
   "scripts": {
-    "build": "webpack --config=.config/webpack.config.prod.js",
-    "start": "webpack --config=.config/webpack.config.dev.js",
+    "build": "gulp build",
+    "start": "gulp watch",
     "lint:css": "styleint /**/*.scss",
     "lint:php": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
     "lint:js": "eslint .",
