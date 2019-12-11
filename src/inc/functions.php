@@ -215,7 +215,16 @@ function get_current_question() : int {
 /**
  * Returns a random question.
  */
-function get_question() {}
+function get_question() {
+	$level     = get_current_level();
+	$questions = get_level( $level );
+
+	// Randomize the questions array.
+	shuffle( $questions );
+
+
+	return $questions[0];
+}
 
 /**
  * Output the head section of the page.
