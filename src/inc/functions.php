@@ -90,8 +90,8 @@ function get_max_questions_for_level( int $level ) : int {
 	$questions  = 0;
 
 	if ( $level_name && file_exists( $data ) ) {
-		$questions_per_level = json_decode( file_get_contents( $data ) );
-		$questions           = $questions_per_level[ $level_name ];
+		$questions_per_level = json_decode( file_get_contents( $data ) )->questions;
+		$questions           = $questions_per_level->$level_name;
 	}
 
 	return $questions;
