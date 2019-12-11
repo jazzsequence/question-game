@@ -292,7 +292,7 @@ function get_head() {
 		<title><?php render_name() ?></title>
 		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'nes.min.css', NES_CSS ); ?>">
-		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'css/styles.css' ); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'css/styles.css' ) . '?ver=' . time(); ?>">
 	</head>
 	<body class="nes-container is-dark">
 	<?php
