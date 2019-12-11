@@ -38,7 +38,7 @@ function get_level( int $level ) {
 
 	// Make sure the level passed is not greater than the max level in the data.
 	if ( $level > get_max_level( $levels ) ) {
-		return false;
+		return [ 'Game over' ];
 	}
 
 	// Get the level name from the levels array.
