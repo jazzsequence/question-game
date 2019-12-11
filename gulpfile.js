@@ -14,4 +14,10 @@ gulp.task( 'clean', () => {
 	] );
 } );
 
-gulp.task( 'default', gulp.series( [ 'clean', 'styles' ] ) );
+gulp.task( 'build', gulp.series( [ 'clean', 'styles' ] ) );
+
+gulp.task( 'watch', () => {
+	gulp.watch( 'src/assets/sass/**/*.scss', ( done ) => {
+		gulp.series( [ 'clean', 'styles' ] )( done );
+	} );
+} );
