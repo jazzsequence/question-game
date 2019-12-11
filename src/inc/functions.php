@@ -327,14 +327,19 @@ function render_button( string $text, string $link, array $classes = [] ) {
 
 	echo $link_tag;
 }
+
+/**
+ * Output the accept cookie button.
+ */
 function render_cookie_button() {
-	?>
-	<a class="nes-btn cookie-confirm" href="?cookie_accept=true">Okay</a>
-	<?php
+	render_button( 'Okay', '?cookie_accept=true', [ 'cookie-confirm' ] );
 }
 
+/**
+ * Output the new game button.
+ */
 function render_new_game_button() {
-	?>
-	<a href="?new_game=true" class="nes-btn is-primary new-game">New Game</a>
-	<?php
+	render_button( 'New Game', '?new_game=true', [ 'is-primary', 'new-game' ] );
+}
+
 }
