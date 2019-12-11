@@ -137,6 +137,37 @@ function assets_url( string $file = '', string $assets = '' ) : string {
 }
 
 /**
+ * Checks if a cookie is set and returns it if it exists. Otherwise returns false if no cookie exists.
+ */
+function get_cookie() {
+	if ( ! isset( $_COOKIE['qst_game'] ) ) {
+		return false;
+	}
+
+	return $_COOKIE['qst_game'];
+}
+
+/**
+ * Deletes a game cookie.
+ */
+function delete_cookie() {
+	setcookie( 'qst_game', 0, 1, '/' );
+}
+
+/**
+ * Updates/sets a game cookie.
+ *
+ * @param int $level     The level to set the cookie to. If no cookie exists, it initializes at level 0.
+ * @param int $questions The questions to set the cookie to. If the game hasn't started yet, initializes to 0 questions.
+ */
+function update_cookie( int $level = 0, int $questions = 0 ) {
+	setcookie( 'qst_game', [
+		'level'     => $level,
+		'questions' => $questions
+	], strtotime( '+1 day' ), '/' );
+}
+
+/**
  * Output the head section of the page.
  *
  * @param string $title (Optional) A page title to display in the browser window/tab.
