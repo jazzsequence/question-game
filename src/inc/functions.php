@@ -296,6 +296,8 @@ function get_head() {
 	</head>
 	<body>
 	<?php
+	var_dump( unserialize( $_COOKIE['qst_game'] )['level'] );
+	var_dump( unserialize( $_COOKIE['qst_game'] )['questions'] );
 }
 
 /**
@@ -303,8 +305,21 @@ function get_head() {
  */
 function get_footer() {
 	?>
+	<script src="<?php echo assets_url( 'serialize-javascript/index.js', '/node_modules/' ); ?>"></script>
 	<script src="<?php echo assets_url( 'js/main.js' ); ?>"></script>
 	</body>
 	</html>
+	<?php
+}
+
+function render_cookie_button() {
+	?>
+	<a class="nes-btn cookie-confirm" href="?cookie_accept=true">Okay</a>
+	<?php
+}
+
+function render_new_game_button() {
+	?>
+	<a href="?new_game=true" class="nes-btn is-primary new-game">New Game</a>
 	<?php
 }

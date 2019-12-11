@@ -27,5 +27,5 @@ function init() {
 		update_cookie();
 	}
 
-	get_template( 'main' );
+	get_template( 'organisms/main' );
 }
