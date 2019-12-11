@@ -12,6 +12,29 @@
 namespace Game;
 
 /**
+ * Return the name of the game, if defined.
+ *
+ * @return string The name of the game as defined in the manifest, or just Game.
+ */
+function get_name() : string {
+	$data = DATA_DIR . 'manifest.json';
+	$name = 'Game';
+
+	if ( file_exists( $data ) ) {
+		$name = empty( json_decode( file_get_contents( $data ) )->name ) ? $name : json_decode( file_get_contents( $data ) )->name;
+	}
+
+	return $name;
+}
+
+/**
+ * Outputs the name of the game.
+ */
+function render_name() {
+	echo get_name();
+}
+
+/**
  * Get the levels set in the project.
  *
  * @return array An array of levels and their numeric value.
