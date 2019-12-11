@@ -17,4 +17,7 @@ $question = get_question();
 	<p>
 		<?php echo $question; ?>
 	</p>
+
+	<?php get_template( 'molecules/next' ); ?>
+
 </div>
