@@ -294,7 +294,7 @@ function get_head() {
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'nes.min.css', NES_CSS ); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'css/styles.css' ); ?>">
 	</head>
-	<body>
+	<body class="nes-container is-dark">
 	<?php
 	var_dump( unserialize( $_COOKIE['qst_game'] )['level'] );
 	var_dump( unserialize( $_COOKIE['qst_game'] )['questions'] );
