@@ -7,7 +7,7 @@ body.is-dark {
 
 .cookie-alert.is-dark {
   position: absolute;
-  bottom: 20px;
+  bottom: -50vh;
   max-width: 85%; }
   .cookie-alert.is-dark p {
     padding-bottom: 1rem; }
