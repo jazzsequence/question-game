@@ -209,7 +209,7 @@ function get_current_level() {
 /**
  * Returns the current question based on the cookie.
  *
- * @return int The current question that has been displayed.
+ * @return mixed The current question that has been displayed. False if the game hasn't started & the cookie hasn't been set.
  */
 function get_current_question() {
 	$cookie = unserialize( get_cookie() );
