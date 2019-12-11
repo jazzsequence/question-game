@@ -187,9 +187,15 @@ function update_cookie( int $level = 0, int $questions = 0 ) {
 	] ), strtotime( '+1 day' ), '/' );
 }
 
-function get_current_level() : int {
+/**
+ * Returns the current level as an integer based on the cookie.
+ * Updates the level from a 0 state if a new game has started.
+ *
+ * @return mixed The current level as an int. False if the game hasn't started
+ */
+function get_current_level() {
 	$cookie   = unserialize( get_cookie() );
-	$level    = $cookie['level'];
+	$level    = isset( $cookie['level'] ) ? $cookie['level'] : false;
 
 	// If the cookie is set to level 0, we're starting a new game. Set the level to 1.
 	if ( 0 === $level ) {
@@ -197,7 +203,7 @@ function get_current_level() : int {
 		update_cookie( $level );
 	}
 	
-	return $level;
+	return $level ?: false;
 }
 
 function get_current_question() : int {
