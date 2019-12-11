@@ -5,7 +5,7 @@
  */
 const qstGameInit = () => {
 	const alert = document.querySelector( '.cookie-alert' );
-	const alertBtn = document.querySelector( 'button.cookie-confirm' );
+	const alertBtn = document.querySelector( 'a.cookie-confirm' );
 
 	alertBtn.addEventListener( 'click', () => {
 		alert.style.display = 'none';
