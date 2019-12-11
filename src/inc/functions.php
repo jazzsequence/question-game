@@ -176,6 +176,12 @@ function assets_url( string $file = '', string $assets = '' ) : string {
 
 	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
 		$domain = str_replace( '/index.php', '', $_SERVER['REQUEST_URI'] );
+
+		// If there's a query string in the URL, strip it out.
+		if ( ! empty( get_query_string() ) ) {
+			$query_string = $_SERVER['QUERY_STRING'];
+			$domain       = str_replace( "?$query_string", '', $domain );
+		}
 	}
 
 	// Check to make sure the file exists.
