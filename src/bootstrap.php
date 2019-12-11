@@ -23,6 +23,9 @@ define( 'NES_CSS', 'node_modules/nes.css/css/' );
  * Run initialization stuff.
  */
 function init() {
-	// Update/store data.
+	if ( ! get_cookie() ) {
+		update_cookie();
+	}
+	
 	get_template( 'main' );
 }
