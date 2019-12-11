@@ -20,17 +20,16 @@ get_head();
 
 		<button type="button" class="nes-btn cookie-confirm">Okay</button>
 	</div>
-
+	
+	<div class="nes-container with-title">
+		<h2 class="title"><?php render_name(); ?></h2>
+		
+		<?php get_template( 'question' ); ?>
+	</div>
+	
 	<div class="new-game">
 		<button type="button" class="nes-btn is-primary new-game">New Game</button>
 	</div>
-
-	<div class="nes-container with-title">
-		<h2 class="title"><?php render_name(); ?></h2>
-
-		<?php get_template( 'question' ); ?>
-	</div>
-
 </div>
 
 <?php
