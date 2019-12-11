@@ -312,6 +312,21 @@ function get_footer() {
 	<?php
 }
 
+/**
+ * Render any kind of button.
+ * 
+ * Note: This is not a button by the strictest sense, but, rather, a link styled to look like a button.
+ *
+ * @param string $text   (Required) The text inside the button.
+ * @param string $link   (Required) The URL to link to.
+ * @param array $classes (Optional) An array of classes for the button. By default, all buttons will have the nes-btn class.
+ */
+function render_button( string $text, string $link, array $classes = [] ) {
+	$classlist = implode( ' ', array_merge( $classes, [ 'nes-btn' ] ) );
+	$link_tag  = "<a class=\"$classlist\" href=\"$link\">$text</a>";
+
+	echo $link_tag;
+}
 function render_cookie_button() {
 	?>
 	<a class="nes-btn cookie-confirm" href="?cookie_accept=true">Okay</a>
