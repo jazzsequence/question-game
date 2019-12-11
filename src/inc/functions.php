@@ -139,18 +139,12 @@ function assets_url( string $file = '', string $assets = '' ) : string {
 	$assets = empty( $assets ) ? '/src/assets/' : $assets;
 
 	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
-		$domain = str_replace( 'index.php', '', $_SERVER['REQUEST_URI'] );
+		$domain = str_replace( '/index.php', '', $_SERVER['REQUEST_URI'] );
 	}
-	// If the file param was empty or the file passed doesn't exist, return the path to the assets dir.
-	if (
-		(
-			! $assets ||
-			! file_exists( "$assets/$file" )
-		) && ( 
-			empty( $file ) || 
-			! file_exists( ASSETS_PATH . "/$file" ) 
-		) ) {
-		return $domain . ASSETS_PATH;
+
+	// Check to make sure the file exists.
+	if ( empty( $file ) || ! file_exists( ROOT_DIR . "/$assets/$file" ) ) {
+		return '';
 	}
 
 	return $domain . $assets . $file;
