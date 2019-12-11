@@ -91,9 +91,9 @@ function get_level_data( string $level ) : array {
 
 /**
  * Returns the highest possible level value.
- * 
+ *
  * Since the values are always stored as integers, we should always get back an integer, but it's possible that a false might be returned if an empty array was passed.
- * 
+ *
  * @param array $levels The array of levels to check.
  * @return int          The max numeric level.
  */
@@ -151,7 +151,7 @@ function get_template( string $template_name ) {
 
 /**
  * Checks for a query string and returns it, parsed as an array, if it exists.
- * 
+ *
  * @return false|array False if no query string exists. Otherwise parses the query string into an array.
  */
 function get_query_string() {
@@ -238,7 +238,7 @@ function get_current_level() {
 		$level++;
 		update_cookie( $level );
 	}
-	
+
 	return $level ?: false;
 }
 
@@ -261,7 +261,7 @@ function get_question() {
 
 	// Increment the question counter.
 	$question_count++;
-	
+
 	if ( $question_count > get_max_questions_for_level( $level ) ) {
 		$level = level_up( $level );
 	} else {
@@ -293,14 +293,12 @@ function level_up( int $old_level ) : int {
 	$question = 0;
 
 	update_cookie( $level, $question );
-	
+
 	return $level;
 }
 
 /**
  * Output the head section of the page.
- *
- * @param string $title (Optional) A page title to display in the browser window/tab.
  */
 function get_head() {
 	?>
@@ -333,12 +331,12 @@ function get_footer() {
 
 /**
  * Render any kind of button.
- * 
+ *
  * Note: This is not a button by the strictest sense, but, rather, a link styled to look like a button.
  *
- * @param string $text   (Required) The text inside the button.
- * @param string $link   (Required) The URL to link to.
- * @param array $classes (Optional) An array of classes for the button. By default, all buttons will have the nes-btn class.
+ * @param string $text    (Required) The text inside the button.
+ * @param string $link    (Required) The URL to link to.
+ * @param array  $classes (Optional) An array of classes for the button. By default, all buttons will have the nes-btn class.
  */
 function render_button( string $text, string $link, array $classes = [] ) {
 	$classlist = implode( ' ', array_merge( $classes, [ 'nes-btn' ] ) );
