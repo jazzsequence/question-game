@@ -207,6 +207,11 @@ function get_current_level() : int {
 	return $level;
 }
 
+function get_current_question() : int {
+	$cookie = unserialize( get_cookie() );
+	return $cookie['questions'];
+}
+
 /**
  * Returns a random question.
  */
