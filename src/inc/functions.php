@@ -180,10 +180,11 @@ function delete_cookie() {
  * @param int $questions The questions to set the cookie to. If the game hasn't started yet, initializes to 0 questions.
  */
 function update_cookie( int $level = 0, int $questions = 0 ) {
-	setcookie( 'qst_game', [
+	setcookie( 'qst_game', serialize( [
 		'level'     => $level,
 		'questions' => $questions
-	], strtotime( '+1 day' ), '/' );
+	] ), strtotime( '+1 day' ), '/' );
+}
 }
 
 /**
