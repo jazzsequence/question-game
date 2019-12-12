@@ -475,3 +475,23 @@ function render_next_level_button() {
 	}
 	render_button( 'Next Level', '?next=level', $classes );
 }
+
+/**
+ * Return a text color class based on a level.
+ *
+ * @param int $level The current level.
+ * @return string    The class to represent that level.
+ */
+function get_level_class( int $level ) : string {
+	switch ( $level ) {
+		case 1:
+			return 'is-success';
+		case 2:
+			return 'is-warning';
+		case 3:
+		case 4:
+			return 'is-error';
+		default:
+			return 'is-primary';
+	}
+}
