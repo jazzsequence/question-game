@@ -344,6 +344,52 @@ function level_up( int $old_level ) : int {
 }
 
 /**
+ * Handle processing of URL query strings.
+ */
+function process_query_strings() {
+	$query_string = get_query_string();
+
+	// If the next level button was clicked, immediately do a level-up.
+	if ( key_exists( 'next', $query_string ) && $query_string['next'] === 'level' ) {
+		$current_level = get_current_level();
+		level_up( $current_level );
+	}
+
+	// If the cookie alert was accepted, store a new cookie so it goes away.
+	if ( key_exists( 'cookie_accept', $query_string ) ) {
+		process_cookie_notif();
+	}
+
+	// If the new game button was clicked, start over.
+	if ( key_exists( 'new_game', $query_string ) ) {
+		delete_cookie();
+	}
+}
+
+/**
+ * Sets a cookie to hide the alert.
+ */
+function process_cookie_notif() {
+	setcookie( 'qst_cookie_ok', 1, strtotime( '+1 year' ), '/' );
+	header( 'Refresh:0' );
+}
+
+/**
+ * Determine if the alert should be displayed based on whether a cookie exists.
+ *
+ * @return bool True if we should show the alert. False otherwise.
+ */
+function show_cookie_alert() {
+	// No cookie has been set for the alert, so show the notice.
+	if ( ! isset( $_COOKIE['qst_cookie_ok'] ) ) {
+		return true;
+	}
+
+	// We've already seen the alert and don't need to see it again.
+	return false;
+}
+
+/**
  * Output the head section of the page.
  */
 function get_head() {
