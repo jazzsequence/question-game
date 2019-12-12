@@ -191,6 +191,17 @@ function get_query_string() {
 }
 
 /**
+ * Strip query args from a URL.
+ *
+ * @param string $url A valid URL.
+ * @return string     The URL with query variables removed.
+ */
+function strip_query_args( string $url ) : string {
+	$query_string = $_SERVER['QUERY_STRING'];
+	return str_replace( "?$query_string", '', $url );
+}
+
+/**
  * Returns the URL path to the assets directory or, optionally, a specific file inside the assets directory.
  *
  * @param string $file   (Optional) A specific file inside the assets directory.
