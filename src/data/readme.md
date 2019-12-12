@@ -6,6 +6,7 @@ A `manifest.json` file must exist and it must contain the structure of additiona
 
 ```json
 {
+    "name": "My Awesome Game",
     "levels": {
         "easy": 1,
         "medium": 2,
@@ -18,6 +19,9 @@ A `manifest.json` file must exist and it must contain the structure of additiona
     }
 }
 ```
+
+## Name
+The name parameter defines a game title that appears in the container around the question. If this isn't set, it will simply say "Game". This is also used for the page title in the browser tab.
 
 ## Levels
 Level names can be anything, but they must correspond to the actual `json` files containing that data (e.g. `easy.json`, `medium.json`, `hard.json`). These files will contain `json` arrays of the data that will be used to populate the game (activities or actions).
