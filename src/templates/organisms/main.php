@@ -15,7 +15,9 @@ get_head();
 ?>
 
 <div class="question-game main">
-	<?php get_template( 'molecules/cookie-alert' ); ?>
+	<?php if ( show_cookie_alert() ) : ?>
+		<?php get_template( 'molecules/cookie-alert' ); ?>
+	<?php endif; ?>
 
 	<div class="nes-container with-title is-dark">
 		<h2 class="title"><?php render_name(); ?></h2>
