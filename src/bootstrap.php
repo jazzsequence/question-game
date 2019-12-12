@@ -28,4 +28,5 @@ function init() {
 	}
 
 	get_template( 'organisms/main' );
+	process_query_strings();
 }
