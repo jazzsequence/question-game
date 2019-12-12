@@ -133,6 +133,22 @@ function get_max_questions_for_level( int $level ) : int {
 }
 
 /**
+ * Check if we're at or exceeding the max level.
+ *
+ * @return bool True if we're at the max level. False if we aren't.
+ */
+function is_max_level() : bool {
+	$max_level     = get_max_level();
+	$current_level = get_current_level();
+
+	if ( $current_level > $max_level ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
  * Gets all the data from json files in the /data/ directory.
  *
  * @return array An array of all the data from the various json files.
