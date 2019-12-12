@@ -109,7 +109,8 @@ function get_level_data( string $level ) : array {
  * @param array $levels The array of levels to check.
  * @return int          The max numeric level.
  */
-function get_max_level( array $levels ) : int {
+function get_max_level() : int {
+	$levels = get_levels();
 	return max( array_values( $levels ) );
 }
 
