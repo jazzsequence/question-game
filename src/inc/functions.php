@@ -218,8 +218,7 @@ function assets_url( string $file = '', string $assets = '' ) : string {
 
 		// If there's a query string in the URL, strip it out.
 		if ( ! empty( get_query_string() ) ) {
-			$query_string = $_SERVER['QUERY_STRING'];
-			$domain       = str_replace( "?$query_string", '', $domain );
+			$domain = strip_query_args( $domain );
 		}
 	}
 
