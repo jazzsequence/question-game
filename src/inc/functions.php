@@ -453,12 +453,25 @@ function render_new_game_button() {
  * Output a next question button.
  */
 function render_next_question_button() {
-	render_button( 'Next', '?next=question', [ 'is-success' ] );
+	$classes = [ 'is-success' ];
+	$url     = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http' ) . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+	if ( is_max_level() ) {
+		$classes[] = 'is-disabled';
+	}
+
+	render_button( 'Next', strip_query_args( $url ), [ 'is-success' ] );
 }
 
 /**
  * Output a next level button.
  */
 function render_next_level_button() {
-	render_button( 'Next Level', '?next=level', [ 'is-warning' ] );
+	$classes = [ 'is-warning' ];
+
+	// Set the button to appear disabled if we've reached the max level.
+	if ( is_max_level() ) {
+		$classes[] = 'is-disabled';
+	}
+	render_button( 'Next Level', '?next=level', $classes );
 }
