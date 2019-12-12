@@ -412,7 +412,6 @@ function get_head() {
  */
 function get_footer() {
 	?>
-	<script src="<?php echo assets_url( 'serialize-javascript/index.js', '/node_modules/' ); ?>"></script>
 	<script src="<?php echo assets_url( 'js/main.js' ); ?>"></script>
 	</body>
 	</html>
