@@ -22,6 +22,10 @@ get_head();
 	<div class="nes-container with-title is-dark">
 		<h2 class="title"><?php render_name(); ?></h2>
 
+		<?php if ( get_current_level() ) : ?>
+			<?php get_template( 'molecules/level' ); ?>
+		<?php endif; ?>
+
 		<?php get_template( 'molecules/question' ); ?>
 	</div>
 
