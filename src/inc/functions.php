@@ -303,7 +303,10 @@ function get_question() {
 	if ( $question_count > get_max_questions_for_level( $level ) ) {
 		$level = level_up( $level );
 	} else {
-		update_cookie( $level, $question_count );
+		// Don't update the cookie if we're just acknowledging cookies.
+		if ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+			update_cookie( $level, $question_count );
+		}
 	}
 
 	$questions = get_level( $level );
