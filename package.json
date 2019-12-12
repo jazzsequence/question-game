@@ -19,7 +19,8 @@
     "lint:css": "styleint /**/*.scss",
     "lint:php": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
     "lint:js": "eslint .",
-    "lint": "npm run lint:js && npm run lint:php"
+    "lint": "npm run lint:js && npm run lint:php",
+    "install": "npm install --production"
   },
   "dependencies": {
     "nes.css": "^2.2.1"
