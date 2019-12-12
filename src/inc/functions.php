@@ -330,10 +330,15 @@ function get_question() {
 function level_up( int $old_level ) : int {
 	delete_cookie();
 
-	$level    = $old_level + 1;
-	$question = 0;
+	// Update the cookie with the next level as long as we haven't hit the max.
+	if ( ! is_max_level() ) {
+		$level    = $old_level + 1;
+		$question = 0;
 
-	update_cookie( $level, $question );
+		update_cookie( $level, $question );
+	} else {
+		$level = 0;
+	}
 
 	return $level;
 }
