@@ -51,6 +51,18 @@ function get_levels() : array {
 }
 
 /**
+ * Gets the level name from the levels array.
+ *
+ * @param  int $level The numeric level value.
+ * @return mixed False if no level exists for the value passed. Otherwise, returns the level data for the requested level.
+ */
+function get_level_name( int $level ) {
+	$levels = get_levels();
+
+	return array_search( $level, $levels );
+}
+
+/**
  * Returns the data for a given level by level value if a value exists. Returns false if no level exists for that value.
  *
  * @param int $level The numeric level value.
