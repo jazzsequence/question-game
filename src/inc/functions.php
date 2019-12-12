@@ -181,11 +181,13 @@ function get_template( string $template_name ) {
  * @return false|array False if no query string exists. Otherwise parses the query string into an array.
  */
 function get_query_string() {
-	if ( empty( $_SERVER['QUERY_STRING'] ) ) {
+	if ( ! isset( $_SERVER['QUERY_STRING'] ) ) {
 		return false;
 	}
 
-	return parse_str( $_SERVER['QUERY_STRING'] );
+	parse_str( $_SERVER['QUERY_STRING'], $args );
+
+	return $args;
 }
 
 /**
