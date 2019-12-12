@@ -405,8 +405,6 @@ function get_head() {
 	</head>
 	<body class="nes-container is-dark">
 	<?php
-	var_dump( unserialize( $_COOKIE['qst_game'] )['level'] );
-	var_dump( unserialize( $_COOKIE['qst_game'] )['questions'] );
 }
 
 /**
