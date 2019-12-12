@@ -106,7 +106,6 @@ function get_level_data( string $level ) : array {
  *
  * Since the values are always stored as integers, we should always get back an integer, but it's possible that a false might be returned if an empty array was passed.
  *
- * @param array $levels The array of levels to check.
  * @return int          The max numeric level.
  */
 function get_max_level() : int {
