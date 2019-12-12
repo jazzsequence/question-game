@@ -69,16 +69,14 @@ function get_level_name( int $level ) {
  * @return mixed     False if no level exists for the value passed. Otherwise, returns the level data for the requested level.
  */
 function get_level( int $level ) {
-	$levels = get_levels();
-
 	// Make sure the level passed is not greater than the max level in the data.
-	if ( $level > get_max_level( $levels ) ) {
+	if ( $level > get_max_level() ) {
 		delete_cookie();
 		return [ 'Game over' ];
 	}
 
 	// Get the level name from the levels array.
-	$level_name = array_search( $level, $levels );
+	$level_name = get_level_name( $level );
 
 	return get_level_data( $level_name );
 }
