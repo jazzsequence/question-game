@@ -26,11 +26,14 @@
         "phpcbf": "vendor/squizlabs/php_codesniffer/bin/phpcbf -s --standard=phpcs.ruleset.xml .",
         "eslint": "npx eslint src/assets/js/**/*.js",
         "stylelint": "npx stylelint src/assets/**/*.scss",
+        "shellcheck": "shellcheck ./bin/*.sh",
         "lint": [
             "@phpcs",
             "@eslint",
-            "@stylelint"
-        ]
+            "@stylelint",
+            "@shellcheck"
+        ],
+        "setup-files": "bash bin/setup-files.sh"
     },
     "config": {
         "sort-packages": true
