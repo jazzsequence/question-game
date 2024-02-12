@@ -9,7 +9,6 @@
 
 namespace Game;
 
-$level = get_level_name( get_current_level() );
 $class = get_level_class( get_current_level() );
 ?>
 <div class="level-question">

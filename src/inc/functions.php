@@ -59,7 +59,7 @@ function get_levels(): array {
 function get_level_name( int $level ) {
 	$levels = get_levels();
 
-	return array_search( $level, $levels );
+	return array_search( $level, $levels, true );
 }
 
 /**
@@ -119,7 +119,7 @@ function get_max_level(): int {
  */
 function get_max_questions_for_level( int $level ): int {
 	$data       = DATA_DIR . 'manifest.json';
-	$level_name = array_search( $level, get_levels() );
+	$level_name = array_search( $level, get_levels(), true );
 	$questions  = 0;
 
 	if ( $level_name && file_exists( $data ) ) {
@@ -294,11 +294,9 @@ function get_question() {
 
 	if ( $question_count > get_max_questions_for_level( $level ) ) {
 		$level = level_up( $level );
-	} else {
-		// Don't update the cookie if we're just acknowledging cookies.
-		if ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+	} elseif ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+			// Don't update the cookie if we're just acknowledging cookies.
 			update_cookie( $level, $question_count );
-		}
 	}
 
 	$questions = get_level( $level );
