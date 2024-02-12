@@ -35,6 +35,7 @@ This project uses a fork of the [nes.css](https://nostalgic-css.github.io/NES.cs
 
 The following developer libraries are included via Composer or NPM for development:
 
+* [nes.css (jazzsequence fork)](https://github.com/jazzsequence/nes.css) (Composer package)
 * [pantheon-systems/pantheon-wp-coding-standards](https://packagist.org/packages/pantheon-systems/pantheon-wp-coding-standards) (Composer package)
 * [humanmade/eslint-config](https://www.npmjs.com/package/@humanmade/eslint-config) (Node package)
 * [humanmade/stylelint-config](https://www.npmjs.com/package/@humanmade/stylelint-config) (Node package)
