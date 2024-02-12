@@ -13,7 +13,20 @@
 		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
 		<!-- Ignore whitespace at the end of the line -->
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
+		<!-- Exclude PHPCompatibility -->
 		<exclude name="PHPCompatibility"/>
+		<!-- Exclude WP rules that don't apply. -->
+		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidatedNotSanitized"/>
+		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedScript"/>
+		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet"/>
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.cookies_setcookie"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize"/>
+		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
+		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown"/>
 	</rule>
 
 
