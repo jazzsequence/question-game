@@ -1,24 +1,32 @@
+@import url("css/nes.css");
 body.is-dark {
-  border: 0; }
+  border: 0;
+}
 
 .question-game {
   max-width: 90%;
-  margin: 5% auto; }
+  margin: 5% auto;
+}
 
 .cookie-alert.is-dark {
   position: absolute;
   bottom: -50vh;
-  max-width: 85%; }
-  .cookie-alert.is-dark p {
-    padding-bottom: 1rem; }
-  .cookie-alert.is-dark a.cookie-confirm {
-    position: absolute;
-    right: 2rem;
-    bottom: 0.75rem; }
+  max-width: 85%;
+}
+.cookie-alert.is-dark p {
+  padding-bottom: 1rem;
+}
+.cookie-alert.is-dark a.cookie-confirm {
+  position: absolute;
+  right: 2rem;
+  bottom: 0.75rem;
+}
 
 .new-game {
   text-align: right;
-  margin: 1rem auto; }
+  margin: 1rem auto;
+}
 
 .next {
-  text-align: right; }
+  text-align: right;
+}
