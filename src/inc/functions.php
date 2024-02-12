@@ -210,24 +210,16 @@ function strip_query_args( string $url ) : string {
  * @return string
  */
 function assets_url( string $file = '', string $assets = '' ) : string {
-	$domain = '';
+	$domain = $_SERVER['HTTP_HOST'];
 	$assets = empty( $assets ) ? '/src/assets/' : $assets;
-
-	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
-		$domain = str_replace( '/index.php', '', $_SERVER['REQUEST_URI'] );
-
-		// If there's a query string in the URL, strip it out.
-		if ( ! empty( get_query_string() ) ) {
-			$domain = strip_query_args( $domain );
-		}
-	}
+	$http = is_null( $_SERVER['HTTPS'] ) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
 
 	// Check to make sure the file exists.
 	if ( empty( $file ) || ! file_exists( ROOT_DIR . "/$assets/$file" ) ) {
-		return '';
+		return $http . $domain . $assets;
 	}
 
-	return $domain . $assets . $file;
+	return $http . $domain . $assets . $file;
 }
 
 /**
