@@ -395,7 +395,7 @@ function get_head() {
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'nes.css' ); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'css/styles.css' ) . '?ver=' . time(); ?>">
 	</head>
-	<body class="nes-container is-dark">
+	<body class="is-dark">
 	<?php
 }
 
