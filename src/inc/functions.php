@@ -16,7 +16,7 @@ namespace Game;
  *
  * @return string The name of the game as defined in the manifest, or just Game.
  */
-function get_name() : string {
+function get_name(): string {
 	$data = DATA_DIR . 'manifest.json';
 	$name = 'Game';
 
@@ -39,7 +39,7 @@ function render_name() {
  *
  * @return array An array of levels and their numeric value.
  */
-function get_levels() : array {
+function get_levels(): array {
 	$data   = DATA_DIR . 'manifest.json';
 	$levels = [];
 
@@ -59,7 +59,7 @@ function get_levels() : array {
 function get_level_name( int $level ) {
 	$levels = get_levels();
 
-	return array_search( $level, $levels );
+	return array_search( $level, $levels, true );
 }
 
 /**
@@ -88,7 +88,7 @@ function get_level( int $level ) {
  *
  * @return array        An array of level data.
  */
-function get_level_data( string $level ) : array {
+function get_level_data( string $level ): array {
 	$src  = DATA_DIR . "$level.json";
 	$data = [];
 
@@ -106,7 +106,7 @@ function get_level_data( string $level ) : array {
  *
  * @return int          The max numeric level.
  */
-function get_max_level() : int {
+function get_max_level(): int {
 	$levels = get_levels();
 	return max( array_values( $levels ) );
 }
@@ -117,9 +117,9 @@ function get_max_level() : int {
  * @param int $level The level in int format.
  * @return int       The number of questions for that level.
  */
-function get_max_questions_for_level( int $level ) : int {
+function get_max_questions_for_level( int $level ): int {
 	$data       = DATA_DIR . 'manifest.json';
-	$level_name = array_search( $level, get_levels() );
+	$level_name = array_search( $level, get_levels(), true );
 	$questions  = 0;
 
 	if ( $level_name && file_exists( $data ) ) {
@@ -135,7 +135,7 @@ function get_max_questions_for_level( int $level ) : int {
  *
  * @return bool True if we're at the max level. False if we aren't.
  */
-function is_max_level() : bool {
+function is_max_level(): bool {
 	$max_level     = get_max_level();
 	$current_level = get_current_level();
 
@@ -151,7 +151,7 @@ function is_max_level() : bool {
  *
  * @return array An array of all the data from the various json files.
  */
-function get_data() : array {
+function get_data(): array {
 	$data = [];
 
 	foreach ( glob( DATA_DIR . '*.json' ) as $datasrc ) {
@@ -196,7 +196,7 @@ function get_query_string() {
  * @param string $url A valid URL.
  * @return string     The URL with query variables removed.
  */
-function strip_query_args( string $url ) : string {
+function strip_query_args( string $url ): string {
 	$query_string = $_SERVER['QUERY_STRING'];
 	return str_replace( "?$query_string", '', $url );
 }
@@ -209,25 +209,17 @@ function strip_query_args( string $url ) : string {
  *
  * @return string
  */
-function assets_url( string $file = '', string $assets = '' ) : string {
-	$domain = '';
+function assets_url( string $file = '', string $assets = '' ): string {
+	$domain = $_SERVER['HTTP_HOST'];
 	$assets = empty( $assets ) ? '/src/assets/' : $assets;
-
-	if ( ! empty( $_SERVER['REQUEST_URI'] ) ) {
-		$domain = str_replace( '/index.php', '', $_SERVER['REQUEST_URI'] );
-
-		// If there's a query string in the URL, strip it out.
-		if ( ! empty( get_query_string() ) ) {
-			$domain = strip_query_args( $domain );
-		}
-	}
+	$http = is_null( $_SERVER['HTTPS'] ) || $_SERVER['HTTPS'] === 'off' ? 'http://' : 'https://';
 
 	// Check to make sure the file exists.
 	if ( empty( $file ) || ! file_exists( ROOT_DIR . "/$assets/$file" ) ) {
-		return '';
+		return $http . $domain . $assets;
 	}
 
-	return $domain . $assets . $file;
+	return $http . $domain . $assets . $file;
 }
 
 /**
@@ -273,7 +265,7 @@ function get_current_level() {
 
 	// If the cookie is set to level 0, we're starting a new game. Set the level to 1.
 	if ( 0 === $level ) {
-		$level++;
+		++$level;
 		update_cookie( $level );
 	}
 
@@ -298,15 +290,13 @@ function get_question() {
 	$question_count = get_current_question();
 
 	// Increment the question counter.
-	$question_count++;
+	++$question_count;
 
 	if ( $question_count > get_max_questions_for_level( $level ) ) {
 		$level = level_up( $level );
-	} else {
-		// Don't update the cookie if we're just acknowledging cookies.
-		if ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+	} elseif ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+			// Don't update the cookie if we're just acknowledging cookies.
 			update_cookie( $level, $question_count );
-		}
 	}
 
 	$questions = get_level( $level );
@@ -327,7 +317,7 @@ function get_question() {
  * @param int $old_level The original level that we want to increase.
  * @return int           The new level.
  */
-function level_up( int $old_level ) : int {
+function level_up( int $old_level ): int {
 	delete_cookie();
 
 	// Update the cookie with the next level as long as we haven't hit the max.
@@ -398,12 +388,12 @@ function get_head() {
 	<html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title><?php render_name() ?></title>
+		<title><?php render_name(); ?></title>
 		<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'nes.min.css', NES_CSS ); ?>">
+		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'nes.css' ); ?>">
 		<link rel="stylesheet" type="text/css" href="<?php echo assets_url( 'css/styles.css' ) . '?ver=' . time(); ?>">
 	</head>
-	<body class="nes-container is-dark">
+	<body class="is-dark">
 	<?php
 }
 
@@ -481,7 +471,7 @@ function render_next_level_button() {
  * @param int $level The current level.
  * @return string    The class to represent that level.
  */
-function get_level_class( int $level ) : string {
+function get_level_class( int $level ): string {
 	switch ( $level ) {
 		case 1:
 			return 'is-success';

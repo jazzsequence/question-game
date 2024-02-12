@@ -1,8 +1,10 @@
 {
-	"extends": "@humanmade/stylelint-config",
-	"rules": {
-		"max-nesting-depth": [ 2, {
-			"ignore": [ "blockless-at-rules", "pseudo-classes" ]
-		} ]
-	}
+  "customSyntax": "postcss-scss",
+  "extends": "@humanmade/stylelint-config",
+  "rules": {
+    "max-nesting-depth": [2, {
+      "ignore": ["blockless-at-rules", "pseudo-classes"]
+    }],
+    "scss/comment-no-empty": null
+  }
 }

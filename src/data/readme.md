@@ -33,3 +33,16 @@ When the last question is asked in the highest level, the game ends.
 
 (Note: Despite the name of this project, questions in the game do not have answers, they are meant more as a "truth or dare" or "have you ever"-style conversation-starter game rather than a trivia game.)
 
+### Questions JSON Structure
+
+Questions are added as array elements in their relevant `{level}.json` file. Each question should simply be its own string in the array. For example:
+
+```json
+[
+    "What's your favorite color?",
+    "What's the last book you read?",
+    "What's your favorite movie?",
+    "What's your favorite food?"
+]
+```
+

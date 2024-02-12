@@ -2,24 +2,34 @@
 <ruleset name="question-game">
 	<description>Linting rules and overrides for Question Game</description>
 
+
 	<!-- Some configuration defaults -->
 	<arg name="extensions" value="php"/>
 	<config name="show_progress" value="1"/>
 
-	<!-- Define the installed paths of our sniffs -->
-	<config name="installed_paths" value="vendor/wp-coding-standards/wpcs,vendor/fig-r/psr2r-sniffer" />
-
 	<!-- Use HM Coding Standards -->
-	<rule ref="vendor/humanmade/coding-standards">
-		<!-- Don't restrict namespaced functions to `namespace.php` -->
-		<exclude name="HM.Files.FunctionFileName"/>
+	<rule ref="vendor/pantheon-systems/pantheon-wp-coding-standards">
 		<!-- Ignore WordPress warning against file_get_contents -->
 		<exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
 		<!-- Ignore whitespace at the end of the line -->
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine"/>
-		<!-- Ignore the rule that namespaced classes and functions should only live inside an inc directory -->
-		<exclude name="HM.Files.NamespaceDirectoryName.NoIncDirectory"/>
+		<!-- Exclude PHPCompatibility -->
+		<exclude name="PHPCompatibility"/>
+		<!-- Exclude WP rules that don't apply. -->
+		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidatedNotSanitized"/>
+		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedScript"/>
+		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet"/>
+		<exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.cookies_setcookie"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize"/>
+		<exclude name="WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
+		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown"/>
 	</rule>
+
+
 
 	<!-- Allow constants and requires in index.php -->
 	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">

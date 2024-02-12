@@ -2,15 +2,40 @@
     "name": "jazzsequence/question-game",
     "description": "A simple game framework with escallating challenge levels",
     "type": "project",
-    "require-dev": {
-        "humanmade/coding-standards": "0.7.0"
-    },
-    "license": "GPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Chris Reynolds",
-            "email": "chris@humanmade.com"
+            "email": "me@chrisreynolds.io"
         }
     ],
-    "require": {}
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:jazzsequence/nes.css.git"
+        }
+    ],
+    "require": {
+        "jazzsequence/nes.css": "dev-develop"
+    },
+    "require-dev": {
+        "pantheon-systems/pantheon-wp-coding-standards": "^2.0"
+    },
+    "scripts": {
+        "phpcs": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
+        "phpcbf": "vendor/squizlabs/php_codesniffer/bin/phpcbf -s --standard=phpcs.ruleset.xml .",
+        "eslint": "npx eslint src/assets/js/**/*.js",
+        "stylelint": "npx stylelint src/assets/**/*.scss",
+        "shellcheck": "shellcheck ./bin/*.sh",
+        "lint": [
+            "@phpcs",
+            "@eslint",
+            "@stylelint",
+            "@shellcheck"
+        ],
+        "setup-files": "bash bin/setup-files.sh"
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
