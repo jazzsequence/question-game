@@ -1,5 +1,5 @@
 {
-	"extends": "humanmade",
+	"extends": "@humanmade/eslint-config",
 	"env": {
 		"es6": true
 	},

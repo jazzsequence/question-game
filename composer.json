@@ -23,7 +23,14 @@
     },
     "scripts": {
         "phpcs": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
-        "phpcbf": "vendor/squizlabs/php_codesniffer/bin/phpcbf -s --standard=phpcs.ruleset.xml ."
+        "phpcbf": "vendor/squizlabs/php_codesniffer/bin/phpcbf -s --standard=phpcs.ruleset.xml .",
+        "eslint": "npx eslint src/assets/js/**/*.js",
+        "stylelint": "npx stylelint src/assets/**/*.scss",
+        "lint": [
+            "@phpcs",
+            "@eslint",
+            "@stylelint"
+        ]
     },
     "config": {
         "sort-packages": true

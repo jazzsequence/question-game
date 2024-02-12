@@ -10,6 +10,6 @@ const qstGameInit = () => {
 	alertBtn.addEventListener( 'click', () => {
 		alert.style.display = 'none';
 	} );
-}
+};
 
 qstGameInit();

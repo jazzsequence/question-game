@@ -1,7 +1,8 @@
-// Import compiled NES.css
+/* stylelint-disable */
 @import url("nes.css");
+/* stylelint-enable */
 
-@import 'base/global';
-@import 'alerts/cookie';
-@import 'buttons/new-game';
-@import 'buttons/next';
+@import "base/global";
+@import "alerts/cookie";
+@import "buttons/new-game";
+@import "buttons/next";
