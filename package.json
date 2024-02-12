@@ -1,44 +1,29 @@
 {
   "name": "question-game",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple game framework with escallating challenge levels",
   "main": "index.php",
+  "devDependencies": {
+    "del": "^7.1",
+    "glob": "^10.3.10",
+    "gulp": "^4.0",
+    "gulp-sass": "^5.1.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.70.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "gulp watch"
+  },
   "repository": {
     "type": "git",
-    "url": "git@github.com:jazzsequence/question-game.git"
+    "url": "git+ssh://git@github.com/jazzsequence/question-game.git"
   },
+  "author": "Chris Reynolds <me@chrisreynolds.io>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jazzsequence/question-game/issues"
   },
-  "author": "Chris Reynolds <chris@jazzsequence.com>",
-  "license": "GPL-3.0-or-later",
-  "homepage": "https://github.com/jazzsequence/question-game#readme",
-  "scripts": {
-    "build": "gulp build",
-    "start": "gulp watch",
-    "lint:css": "styleint /**/*.scss",
-    "lint:php": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
-    "lint:js": "eslint .",
-    "lint": "npm run lint:js && npm run lint:php",
-    "install": "npm install --production"
-  },
-  "dependencies": {
-    "nes.css": "^2.2.1"
-  },
-  "devDependencies": {
-    "@humanmade/stylelint-config": "^0.7.0",
-    "babel-eslint": "^10.0.3",
-    "del": "^5.1.0",
-    "eslint": "^5.16.0",
-    "eslint-config-humanmade": "^0.7.0",
-    "eslint-config-react-app": "^3.0.8",
-    "eslint-plugin-flowtype": "^3.13.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^5.1.0",
-    "node-sass": "^7.0.0",
-    "stylelint": "^16.2.1"
-  }
+  "homepage": "https://github.com/jazzsequence/question-game#readme"
 }

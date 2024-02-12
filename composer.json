@@ -2,15 +2,22 @@
     "name": "jazzsequence/question-game",
     "description": "A simple game framework with escallating challenge levels",
     "type": "project",
-    "require-dev": {
-        "humanmade/coding-standards": "0.7.0"
-    },
-    "license": "GPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Chris Reynolds",
-            "email": "chris@humanmade.com"
+            "email": "me@chrisreynolds.io"
         }
     ],
-    "require": {}
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:jazzsequence/nes.css.git"
+        }
+    ],
+    "require-dev": {
+    },
+    "require": {
+        "jazzsequence/nes.css": "dev-develop"
+    }
 }
