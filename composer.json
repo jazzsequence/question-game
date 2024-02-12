@@ -15,9 +15,17 @@
             "url": "git@github.com:jazzsequence/nes.css.git"
         }
     ],
-    "require-dev": {
-    },
     "require": {
         "jazzsequence/nes.css": "dev-develop"
+    },
+    "require-dev": {
+        "pantheon-systems/pantheon-wp-coding-standards": "^2.0"
+    },
+    "scripts": {
+        "phpcs": "vendor/squizlabs/php_codesniffer/bin/phpcs -s --standard=phpcs.ruleset.xml .",
+        "phpcbf": "vendor/squizlabs/php_codesniffer/bin/phpcbf -s --standard=phpcs.ruleset.xml ."
+    },
+    "config": {
+        "sort-packages": true
     }
 }
