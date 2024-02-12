@@ -1,6 +1,7 @@
 @import url("nes.css");
 body.is-dark {
   border: 0;
+  background-color: #212529;
 }
 
 .question-game {
