@@ -35,18 +35,9 @@ This project uses a fork of the [nes.css](https://nostalgic-css.github.io/NES.cs
 
 The following developer libraries are included via Composer or NPM for development:
 
-* [humanmade/coding-standards](https://packagist.org/packages/humanmade/coding-standards) (Composer package)
+* [pantheon-systems/pantheon-wp-coding-standards](https://packagist.org/packages/pantheon-systems/pantheon-wp-coding-standards) (Composer package)
+* [humanmade/eslint-config](https://www.npmjs.com/package/@humanmade/eslint-config) (Node package)
 * [humanmade/stylelint-config](https://www.npmjs.com/package/@humanmade/stylelint-config) (Node package)
-* [babel-eslint](https://www.npmjs.com/package/babel-eslint) (Node package)
-* [del](https://www.npmjs.com/package/del) (Node package)
-* [eslint](https://www.npmjs.com/package/eslint) (Node package)
-* [eslint-config-humanmade](https://www.npmjs.com/package/eslint-config-humanmade) (Node package)
-* [eslint-config-react-app](https://www.npmjs.com/package/eslint-config-react-app) (Node package)
-* [eslint-plugin-flowtype](https://www.npmjs.com/package/eslint-plugin-flowtype) (Node package)
-* [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import) (Node package)
-* [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y) (Node package)
-* [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react) (Node package)
 * [gulp](https://www.npmjs.com/package/gulp) (Node package)
-* [gulp-sass](https://www.npmjs.com/package/gulp-sass) (Node package)
 * [node-sass](https://www.npmjs.com/package/node-sass) (Node package)
-* [stylelint](https://www.npmjs.com/package/stylelint) (Node package)
+* [node-jq](https://www.npmjs.com/package/node-jq) (Node package)
