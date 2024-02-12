@@ -44,7 +44,7 @@ generate_game_data() {
   done
 
   echo "$manifest_content" > "$file_name"
-  echo "Generated $file_name and level JSON files."
+  echo "Generated $file_name and level JSON files in src/data/."
 }
 
 # Call the function
