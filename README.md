@@ -15,13 +15,9 @@ Your game content (questions/actions/etc.) is stored in custom `.json` files sto
 
 ## Installation Requirements
 
-To use the game, you must have a local PHP server running. This could be in a virtual machine environment like [Vagrant](https://www.vagrantup.com/), in a [Docker](https://www.docker.com/) box, using a platform like [WAMP](http://www.wampserver.com/en/)/[MAMP](https://www.mamp.info/en/) or local [LAMP](https://www.digitalocean.com/community/tags/lamp-stack?type=tutorials) stack. The game is written in PHP, so it won't work without some server that's able to serve PHP files in a browser.
+The easiest way to play the game is to use Lando to set up a simple web environment on which to run it. A `.lando.yml` file has been provided to facilitate setting up the environment. Simply run `lando start` in the root project directory to start the game.
 
-If cloning the repository locally, you will also need Node/NPM to install the [nes.css](https://nostalgic-css.github.io/NES.css/) library used for the base styles. At this time that is the only external dependency and the required files are loaded from the `node_modules` directory. Run the following command to download _only_ the required NPM dependencies (excluding the `devDependencies`):
-
-```bash
-npm run install
-```
+Alternately you can use a different virtual machine environment like [Vagrant](https://www.vagrantup.com/), your own [Docker](https://www.docker.com/) box, using a platform like [WAMP](http://www.wampserver.com/en/)/[MAMP](https://www.mamp.info/en/) or local [LAMP](https://www.digitalocean.com/community/tags/lamp-stack?type=tutorials) stack. The game is written in PHP, so it won't work without some server that's able to serve PHP files in a browser.
 
 ## External Libraries
 
