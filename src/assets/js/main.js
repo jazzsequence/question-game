@@ -7,6 +7,11 @@ const qstGameInit = () => {
 	const alert = document.querySelector( '.cookie-alert' );
 	const alertBtn = document.querySelector( 'a.cookie-confirm' );
 
+	// Bail if the alert isn't rendered.
+	if ( ! alert || ! alertBtn ) {
+		return;
+	}
+
 	alertBtn.addEventListener( 'click', () => {
 		alert.style.display = 'none';
 	} );
