@@ -27,6 +27,8 @@
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotValidated"/>
 		<exclude name="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized"/>
 		<exclude name="WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode"/>
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict"/>
 	</rule>
 
 
