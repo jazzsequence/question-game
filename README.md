@@ -1,7 +1,7 @@
 # Question Game
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-A simple game framework with escallating challenge levels
+A simple game framework written in PHP with escallating challenge levels
 
 ## Description
 
@@ -53,3 +53,12 @@ The following developer libraries are included via Composer or NPM for developme
 * [node-sass](https://www.npmjs.com/package/node-sass) (Node package)
 * [jq](https://jqlang.github.io/jq/) (System library)
 * [lando](https://docs.lando.dev/) (System library)
+
+## Ideas for the future
+
+The following are some ideas I have that could be implemented in future iterations:
+
+* Use browser local storage or NoSQL to store data instead of cookies.
+* Allow `json` files to be uploaded and parsed to create the game data.
+* Create a game-builder interface where the files can be created and edited in the browser.
+* Allow multiple games to be installed simultaneously (multiple manifests).
