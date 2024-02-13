@@ -1,51 +1,47 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-# Navigate to the data directory
+# Ensure src/data directory exists or create it
+mkdir -p src/data
 cd src/data || exit
 
-# Function to prompt for game details and generate JSON files
-generate_game_data() {
+generate_manifest_json() {
   read -rp "Enter the name of the game: " game_name
-  echo "Enter the levels (e.g., easy, medium, hard), followed by [ENTER] twice to stop:"
+  declare -A levels_questions
 
-  # Read levels into an array
-  while IFS= read -r line; do
-    [[ $line ]] || break
-    levels+=("$line")
+  # Collect levels and their question counts
+  while :; do
+    read -rp "Enter the level name (or leave empty to stop): " level_name
+    [[ -z "$level_name" ]] && break
+    read -rp "Enter the number of questions for level $level_name: " question_count
+
+    levels_questions["$level_name"]=$question_count
+
+    # Prepare an empty array for the level's questions
+    echo "[]" > "${level_name}.json"
   done
 
-  # Create levels and questions objects
-  levels_json="{"
-  questions_json="{"
-  for level in "${levels[@]}"; do
-    read -rp "Enter the number of questions for level $level: " num_questions
-    levels_json+="\"$level\": \"$level\","
-    questions_json+="\"$level\": $num_questions,"
-    echo "[]" > "$level.json" # Create a level file with an empty array
-  done
-  levels_json="${levels_json%,}}" # Remove trailing comma
-  questions_json="${questions_json%,}}"
+  # Start building the JSON
+  json="{\"name\": \"$game_name\", \"levels\": {"
+  levels_json=""
+  questions_json=""
 
-  # Generate the manifest.json content
-  manifest_content=$(jq -n \
-    --arg name "$game_name" \
-    --argjson levels "$levels_json" \
-    --argjson questions "$questions_json" \
-    '{name: $name, levels: $levels, questions: $questions}')
-
-  # Check for existing manifest files and create a new one if needed
-  file_name="manifest.json"
-  counter=1
-  while [ -f "$file_name" ]; do
-    file_name="manifest-$counter.json"
-    ((counter++))
+  for level in "${!levels_questions[@]}"; do
+    levels_json="$levels_json\"$level\": ${levels_questions[$level]},"
+    questions_json="$questions_json\"$level\": ${levels_questions[$level]},"
   done
 
-  echo "$manifest_content" > "$file_name"
-  echo "Generated $file_name and level JSON files in src/data/."
+  # Remove trailing commas
+  levels_json=${levels_json%,}
+  questions_json=${questions_json%,}
+
+  # Complete the JSON structure
+  json="$json $levels_json }, \"questions\": { $questions_json }}"
+
+  echo $json | jq '.' > manifest.json
+
+  echo "Generated manifest.json with levels and questions."
 }
 
-# Call the function
-generate_game_data
+generate_manifest_json
