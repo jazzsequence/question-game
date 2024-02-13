@@ -41,7 +41,5 @@
     "url": "https://github.com/jazzsequence/question-game/issues"
   },
   "homepage": "https://github.com/jazzsequence/question-game#readme",
-  "dependencies": {
-    "node-jq": "^4.3.0"
-  }
+  "dependencies": {}
 }

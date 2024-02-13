@@ -17,6 +17,8 @@ Your game content (questions/actions/etc.) is stored in custom `.json` files sto
 
 The easiest way to play the game is to use Lando to set up a simple web environment on which to run it. A `.lando.yml` file has been provided to facilitate setting up the environment. Simply run `lando start` in the root project directory to start the game.
 
+You will also need to install [jq](https://jqlang.github.io/jq/) if you want to use the helper script to generate your game data files. This can be installed via Homebrew as described below.
+
 Alternately you can use a different virtual machine environment like [Vagrant](https://www.vagrantup.com/), your own [Docker](https://www.docker.com/) box, using a platform like [WAMP](http://www.wampserver.com/en/)/[MAMP](https://www.mamp.info/en/) or local [LAMP](https://www.digitalocean.com/community/tags/lamp-stack?type=tutorials) stack. The game is written in PHP, so it won't work without some server that's able to serve PHP files in a browser.
 
 ## Generating Game Data Files
@@ -37,7 +39,7 @@ brew install jq
 
 ## External Libraries
 
-This project uses a fork of the [nes.css](https://nostalgic-css.github.io/NES.css/) library for a retro game visual design. Additionally, it uses [node-jq](https://www.npmjs.com/package/node-jq) to parse JSON data which is used by the helper script to generate data files.
+This project uses a fork of the [nes.css](https://nostalgic-css.github.io/NES.css/) library for a retro game visual design. Additionally, it uses [jq](https://jqlang.github.io/jq/) to parse JSON data which is used by the helper script to generate data files.
 
 The following developer libraries are included via Composer or NPM for development:
 
@@ -47,4 +49,5 @@ The following developer libraries are included via Composer or NPM for developme
 * [humanmade/stylelint-config](https://www.npmjs.com/package/@humanmade/stylelint-config) (Node package)
 * [gulp](https://www.npmjs.com/package/gulp) (Node package)
 * [node-sass](https://www.npmjs.com/package/node-sass) (Node package)
-* [node-jq](https://www.npmjs.com/package/node-jq) (Node package)
+* [jq](https://jqlang.github.io/jq/) (System library)
+* [lando](https://docs.lando.dev/) (System library)

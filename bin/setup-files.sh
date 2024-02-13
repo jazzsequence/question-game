@@ -1,21 +1,9 @@
 #!/usr/bin/env bash
 
-set -e
+set -ex
 
 # Navigate to the data directory
 cd src/data || exit
-
-# Function to check for jq or fallback to node-jq
-check_for_jq() {
-  if command -v jq &>/dev/null; then
-    JQ="jq"
-  elif command -v npx &>/dev/null && [[ -f node_modules/.bin/jq ]]; then
-    JQ="npx jq"
-  else
-    echo "jq is not installed and node-jq is not available. Please install jq or node-jq."
-    exit 1
-  fi
-}
 
 # Function to prompt for game details and generate JSON files
 generate_game_data() {
@@ -41,7 +29,7 @@ generate_game_data() {
   questions_json="${questions_json%,}}"
 
   # Generate the manifest.json content
-  manifest_content=$("$JQ" -n \
+  manifest_content=$(jq -n \
     --arg name "$game_name" \
     --argjson levels "$levels_json" \
     --argjson questions "$questions_json" \
