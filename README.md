@@ -29,6 +29,12 @@ To run the script, in a terminal window run:
 composer setup-files
 ```
 
+For the best experience, you should install `jq` on your local machine. This can be installed on a Mac via Homebrew:
+
+```bash
+brew install jq
+```
+
 ## External Libraries
 
 This project uses a fork of the [nes.css](https://nostalgic-css.github.io/NES.css/) library for a retro game visual design. Additionally, it uses [node-jq](https://www.npmjs.com/package/node-jq) to parse JSON data which is used by the helper script to generate data files.
