@@ -59,7 +59,7 @@ function get_levels(): array {
 function get_level_name( int $level ) {
 	$levels = get_levels();
 
-	return array_search( $level, $levels, true );
+	return array_search( $level, $levels );
 }
 
 /**
@@ -92,7 +92,7 @@ function get_level_data( string $level ): array {
 	$src  = DATA_DIR . "$level.json";
 	$data = [];
 
-	if ( file_exists( $src ) ) {
+	if ( file_exists( $src ) ) { 
 		$data = json_decode( file_get_contents( $src ) );
 	}
 
@@ -119,7 +119,7 @@ function get_max_level(): int {
  */
 function get_max_questions_for_level( int $level ): int {
 	$data       = DATA_DIR . 'manifest.json';
-	$level_name = array_search( $level, get_levels(), true );
+	$level_name = array_search( $level, get_levels() );
 	$questions  = 0;
 
 	if ( $level_name && file_exists( $data ) ) {
@@ -230,7 +230,8 @@ function get_cookie() {
 		return false;
 	}
 
-	return $_COOKIE['qst_game'];
+	$cookie = unserialize( urldecode( $_COOKIE['qst_game'] ) );
+	return $cookie;
 }
 
 /**
@@ -247,10 +248,10 @@ function delete_cookie() {
  * @param int $questions The questions to set the cookie to. If the game hasn't started yet, initializes to 0 questions.
  */
 function update_cookie( int $level = 0, int $questions = 0 ) {
-	setcookie( 'qst_game', serialize( [
+	setcookie( 'qst_game', urlencode( serialize( [
 		'level'     => $level,
 		'questions' => $questions,
-	] ), strtotime( '+1 day' ), '/' );
+	] ) ), strtotime( '+1 day' ), '/' );
 }
 
 /**
@@ -260,7 +261,7 @@ function update_cookie( int $level = 0, int $questions = 0 ) {
  * @return mixed The current level as an int. False if the game hasn't started
  */
 function get_current_level() {
-	$cookie   = unserialize( get_cookie() );
+	$cookie   = get_cookie(); 
 	$level    = isset( $cookie['level'] ) ? $cookie['level'] : false;
 
 	// If the cookie is set to level 0, we're starting a new game. Set the level to 1.
@@ -278,7 +279,7 @@ function get_current_level() {
  * @return mixed The current question that has been displayed. False if the game hasn't started & the cookie hasn't been set.
  */
 function get_current_question() {
-	$cookie = unserialize( get_cookie() );
+	$cookie = get_cookie();
 	return isset( $cookie['questions'] ) ? $cookie['questions'] : false;
 }
 
@@ -294,13 +295,13 @@ function get_question() {
 
 	if ( $question_count > get_max_questions_for_level( $level ) ) {
 		$level = level_up( $level );
-	} elseif ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) {
+	} elseif ( empty( get_query_string() ) || ( get_query_string() && ! key_exists( 'cookie_accept', get_query_string() ) ) ) { 
 			// Don't update the cookie if we're just acknowledging cookies.
 			update_cookie( $level, $question_count );
 	}
 
 	$questions = get_level( $level );
-
+	
 	if ( ! empty( $questions ) ) {
 		// Randomize the questions array.
 		shuffle( $questions );

@@ -8,6 +8,7 @@ cd src/data || exit
 
 generate_manifest_json() {
   read -rp "Enter the name of the game: " game_name
+  declare -a levels_order
   declare -A levels_questions
 
   # Collect levels and their question counts
@@ -16,30 +17,29 @@ generate_manifest_json() {
     [[ -z "$level_name" ]] && break
     read -rp "Enter the number of questions for level $level_name: " question_count
 
+    levels_order+=("$level_name")
     levels_questions["$level_name"]=$question_count
 
     # Prepare an empty array for the level's questions
     echo "[]" > "${level_name}.json"
   done
 
-  # Start building the JSON
-  json="{\"name\": \"$game_name\", \"levels\": {"
+  # Build the JSON parts for levels and questions
   levels_json=""
   questions_json=""
-
-  for level in "${!levels_questions[@]}"; do
-    levels_json="$levels_json\"$level\": ${levels_questions[$level]},"
-    questions_json="$questions_json\"$level\": ${levels_questions[$level]},"
+  level_index=1
+  for level in "${levels_order[@]}"; do
+    levels_json+="\"$level\": $level_index,"
+    questions_json+="\"$level\": ${levels_questions[$level]},"
+    ((level_index++))
   done
-
-  # Remove trailing commas
   levels_json=${levels_json%,}
   questions_json=${questions_json%,}
 
-  # Complete the JSON structure
-  json="$json $levels_json }, \"questions\": { $questions_json }}"
+  # Combine the parts into the final JSON
+  json="{\"name\": \"$game_name\", \"levels\": {${levels_json}}, \"questions\": {${questions_json}}}"
 
-  echo $json | jq '.' > manifest.json
+  echo "$json" | jq '.' > manifest.json
 
   echo "Generated manifest.json with levels and questions."
 }
