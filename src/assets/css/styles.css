@@ -1,4 +1,6 @@
+/* stylelint-disable */
 @import url("nes.css");
+/* stylelint-enable */
 body.is-dark {
   border: 0;
   background-color: #212529;
@@ -11,7 +13,7 @@ body.is-dark {
 
 .cookie-alert.is-dark {
   position: absolute;
-  bottom: -50vh;
+  bottom: 25vh;
   max-width: 85%;
 }
 .cookie-alert.is-dark p {
