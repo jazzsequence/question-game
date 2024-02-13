@@ -31,6 +31,8 @@ To run the script, in a terminal window run:
 composer setup-files
 ```
 
+You can remove generated files you don't want by running `composer clean-files`.
+
 For the best experience, you should install `jq` on your local machine. This can be installed on a Mac via Homebrew:
 
 ```bash
