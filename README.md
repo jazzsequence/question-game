@@ -62,3 +62,4 @@ The following are some ideas I have that could be implemented in future iteratio
 * Allow `json` files to be uploaded and parsed to create the game data.
 * Create a game-builder interface where the files can be created and edited in the browser.
 * Allow multiple games to be installed simultaneously (multiple manifests).
+* Add comprehensive unit testing!
