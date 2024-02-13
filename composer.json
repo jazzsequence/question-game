@@ -33,7 +33,8 @@
             "@stylelint",
             "@shellcheck"
         ],
-        "setup-files": "bash bin/setup-files.sh"
+        "setup-files": "bash bin/setup-files.sh",
+        "clean-files": "rm src/data/*.json"
     },
     "config": {
         "sort-packages": true,
