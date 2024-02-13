@@ -64,3 +64,4 @@ The following are some ideas I have that could be implemented in future iteratio
 * Allow multiple games to be installed simultaneously (multiple manifests).
 * Add comprehensive unit testing!
 * Add autotag action.
+* Run entirely in the browser!
