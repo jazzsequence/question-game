@@ -64,7 +64,7 @@ validate_level_files() {
             continue
         fi
 
-        echo "$file is a valid JSON array." >&2
+        echo "$file is a valid JSON array."
     done
 }
 
