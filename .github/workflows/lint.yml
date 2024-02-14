@@ -21,13 +21,14 @@ jobs:
         run: |
           # Initialize an empty string to collect errors
           VALIDATION_ERRORS=""
-          
+          echo "Testing good files..."
           # Loop through all files in the good fixtures directory and copy them to the src/data directory
           for file in ${{ github.workspace }}/.github/workflows/fixtures/good/*.json; do
             echo "Copying $file..."
             cp "$file" "${{ github.workspace }}/src/data/"
           done
 
+          ls -la ${{ github.workspace }}/src/data/
           # Validate good files, expecting success
           if ! composer validate-files; then
             VALIDATION_ERRORS+="Validation failed for good input. "
@@ -36,12 +37,14 @@ jobs:
           # Clean up after testing with valid files
           composer clean-files
           
+          echo "Testing bad files..."
           # Setup for invalid files
           for file in ${{ github.workspace }}/.github/workflows/fixtures/bad/*.json; do
             echo "Copying $file..."
             cp "$file" "${{ github.workspace }}/src/data/"
           done
 
+          ls -la ${{ github.workspace }}/src/data/
           # Validate bad files, expecting failure
           if composer validate-files; then
             VALIDATION_ERRORS+="Validation did not fail as expected for bad input. "
