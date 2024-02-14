@@ -45,26 +45,24 @@ validate_manifest() {
     echo "manifest.json is valid."
 }
 
-# Validate other JSON files
+# Validate level JSON files against project-specific requirements
 validate_level_files() {
-    mapfile -t level_names < <(jq -r '.levels | keys | .[]' "$data_dir/manifest.json")
-    
-    for level_name in "${level_names[@]}"; do
-        file="$data_dir/${level_name}.json"
-        if [[ ! -f "$file" ]]; then
-            echo "JSON file for level $level_name does not exist." >&2
+    for file in "$data_dir"/*.json; do
+        [[ "$(basename "$file")" == "manifest.json" ]] && continue  # Skip manifest.json
+
+        # Validate file is a JSON array
+        if ! jq -e 'type == "array"' "$file" > /dev/null; then
+            echo "Error in $file: File is not a valid JSON array." >&2
             continue
         fi
 
-        # Attempt to validate JSON array; capture errors
-        if ! error_message=$(jq -e 'type == "array"' "$file" 2>&1); then
-            echo "Error in $file:" >&2
-            echo "$error_message" >&2
-            echo "Common issues include invalid JSON syntax, trailing commas, or incorrect data types." >&2
+        # Validate each element in the array is a string
+        if ! jq -e 'all(.[]; type == "string")' "$file" > /dev/null; then
+            echo "Error in $file: All elements must be strings." >&2
             continue
         fi
 
-        echo "$file is valid JSON."
+        echo "$file is validated successfully."
     done
 }
 
