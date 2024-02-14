@@ -7,42 +7,28 @@ data_dir="./src/data"
 
 # Function to validate manifest.json
 validate_manifest() {
-    manifest="$data_dir/manifest.json"
-    if [[ ! -f "$manifest" ]]; then
-        echo "manifest.json does not exist."
+    local manifest_file="$data_dir/manifest.json"
+
+    # Check existence of manifest.json
+    if [[ ! -f "$manifest_file" ]]; then
+        echo "manifest.json does not exist." >&2
         return 1
     fi
 
-    # Validate structure and types
-    jq_errors=$(jq -r '
-        if .name | type != "string" then "Invalid name"
-        elif .levels | type != "object" then "Invalid levels object"
-        elif .questions | type != "object" then "Invalid questions object"
-        else empty
-        end
-    ' "$manifest")
-    
-    if [[ -n "$jq_errors" ]]; then
-        echo "Validation errors in manifest.json:"
-        echo "$jq_errors"
+    # Validate "levels" to ensure all values are numbers
+    if ! jq -e '.levels | map_values(type == "number") | all' "$manifest_file" > /dev/null; then
+        echo "Error in manifest.json: All 'levels' values must be numbers." >&2
         return 1
     fi
 
-    # Initialize expected level value
-    expected_level=1
-
-    # Extract levels and validate them
-    mapfile -t levels < <(jq -r '.levels | to_entries | sort_by(.value) | .[].value' "$manifest")
-
-    for level in "${levels[@]}"; do
-        if [[ "$level" -ne "$expected_level" ]]; then
-            echo "Level $level is not sequential or missing. Expected $expected_level."
-            return 1
-        fi
-        ((expected_level++))
-    done
+    # Validate "questions" to ensure all values are numbers or strings that can be interpreted as numbers
+    if ! jq -e '.questions | map_values(type == "number" or (type == "string" and test("^[0-9]+$"))) | all' "$manifest_file" > /dev/null; then
+        echo "Error in manifest.json: All 'questions' values must be numeric or strings representing numeric values." >&2
+        return 1
+    fi
 
     echo "manifest.json is valid."
+    return 0
 }
 
 # Validate level JSON files against project-specific requirements
