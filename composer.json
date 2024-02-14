@@ -34,7 +34,8 @@
             "@shellcheck"
         ],
         "setup-files": "bash bin/setup-files.sh",
-        "clean-files": "rm src/data/*.json"
+        "clean-files": "rm src/data/*.json",
+        "validate-files": "bash bin/validate-files.sh"
     },
     "config": {
         "sort-packages": true,
