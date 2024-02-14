@@ -1,5 +1,8 @@
 # Question Game
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+[![GitHub Release](https://img.shields.io/github/v/release/jazzsequence/question-game)](https://github.com/jazzsequence/question-game/releases)
+[![GitHub License](https://img.shields.io/github/license/jazzsequence/question-game)](https://github.com/jazzsequence/question-game?tab=MIT-1-ov-file#MIT-1-ov-file)
+
 
 A simple game framework written in PHP with escallating challenge levels
 
@@ -31,9 +34,11 @@ To run the script, in a terminal window run:
 composer setup-files
 ```
 
-You can remove generated files you don't want by running `composer clean-files`.
+You can remove generated files you don't want by running `composer clean-files`. 
 
-For the best experience, you should install `jq` on your local machine. This can be installed on a Mac via Homebrew:
+A file validator has been added as well to ensure your files are formatted correctly. You can run this with `composer validate-files`.
+
+If you're running any of these JSON file manipulation scripts, you're going to need to install `jq` on your local machine to parse the JSON. This can be installed on a Mac via Homebrew:
 
 ```bash
 brew install jq
@@ -63,5 +68,5 @@ The following are some ideas I have that could be implemented in future iteratio
 * Create a game-builder interface where the files can be created and edited in the browser.
 * Allow multiple games to be installed simultaneously (multiple manifests).
 * Add comprehensive unit testing!
-* Add autotag action.
+* ~~Add autotag action.~~
 * Run entirely in the browser!
