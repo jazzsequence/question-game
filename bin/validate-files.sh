@@ -64,8 +64,10 @@ validate_level_files() {
             continue
         fi
 
-        echo "$file is a valid JSON array."
+        echo "$file is valid JSON."
     done
 }
 
 validate_manifest && validate_level_files
+
+echo "Done validating files."
