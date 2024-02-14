@@ -45,9 +45,13 @@ jobs:
 
           # Validate bad files, expecting failure
           if composer validate-files; then
+            # If the validation unexpectedly succeeds, add an error message
             VALIDATION_ERRORS+="Validation did not fail as expected for bad input. "
+          else
+            # If the validation fails as expected, this is the correct behavior, so do nothing or log as needed
+            echo "Validation failed as expected for bad input."
           fi
-          
+
           # Check if there were any validation errors
           if [ -n "$VALIDATION_ERRORS" ]; then
             echo "Errors during validation: $VALIDATION_ERRORS"
