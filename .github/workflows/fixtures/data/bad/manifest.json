@@ -1,0 +1,13 @@
+{
+    "name": "My Awesome Game",
+    "levels": {
+        "easy": 1,
+        "hard": 3,
+        "medium": 2
+    },
+    "questions": {
+        "easy": "easy",
+        "medium": "10",
+        "hard": 5
+    }
+}
